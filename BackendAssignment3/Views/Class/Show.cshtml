@@ -1,0 +1,21 @@
+﻿@model BackendAssignment3.Models.Class
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Class Information</h2>
+
+<p>This is the Information of a individual class</p>
+
+
+<div class="showcontainer">
+    <nav>
+        <a class="navlink" href="/Class/List">Back to Classes list</a>
+        <a class="dellink">Delete</a>
+    </nav>
+    <p>Class ID: @Model.ClassId</p>
+    <h3>Class Name: @Model.ClassName</h3>
+    <p>Class Code: @Model.ClassCode</p>
+    <p>Class Start Date: @Model.StartDate </p>
+    <p>Class End Date: @Model.FinishDate </p>
+</div>

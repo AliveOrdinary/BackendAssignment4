@@ -1,0 +1,43 @@
+﻿@model BackendAssignment3.Models.TeacherClassModel
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Teacher Information</h2>
+<p>This is the information of a individual teacher</p>
+
+
+
+<div class="showcontainer">
+    <nav>
+        <a class="navlink" href="/Teacher/List">Back to Teachers list</a>
+        <a class="dellink" href="/Teacher/DeleteConfirm/@Model.Teacher.TeacherId">Delete</a>
+    </nav>
+    <p>Teacher ID: @Model.Teacher.TeacherId</p>
+    <h3>Name: @Model.Teacher.TeacherFname @Model.Teacher.TeacherLname</h3>
+    <p> Employee Number: @Model.Teacher.EmployeeNumber</p>
+    <p> Hire Date: @Model.Teacher.HireDate</p>
+    <p> Salary: @Model.Teacher.Salary</p>
+
+    <h3>Classes</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Class Code</th>
+                <th>Class Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Classes)
+            {
+                <tr>
+                    <td> @item.ClassCode</td>
+                    <td> @item.ClassName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+</div>
+
+

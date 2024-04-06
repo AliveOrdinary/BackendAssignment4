@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Add New Teacher</h2>
+
+<div class="showcontainer">
+        <nav>
+        <a class="navlink" href="/Teacher/List">Back to Teachers list</a>
+    </nav>
+    <form class="addform" method="POST" action="/Teacher/Create">
+        <div>
+            <label for="TeacherFname">First Name:</label>
+            <input type="text" name="TeacherFname" id="TeacherFname" required >
+        </div>
+        <div>
+            <label for="TeacherLname">Last Name:</label>
+            <input type="text" name="TeacherLname" id="TeacherLname" required>
+        </div>
+        <div>
+            <label for="EmployeeNumber">Employee Number:</label>
+            <input type="text" name="EmployeeNumber" id="EmployeeNumber" required>
+        </div>
+        <div>
+            <label for="HireDate">Hire Date:</label>
+            <input type="date" name="HireDate" id="HireDate" required>
+        </div>
+        <div>
+            <label for="Salary">Salary:</label>
+            <input type="number" name="Salary" id="Salary" required>
+        </div>
+        <button class="btn" type="submit">Add Teacher</button>
+    </form>
+</div>
+
+<script>
+    window.onload = function () {
+        // validate user input
+        var form = document.querySelector('.addform');
+
+        form.onsubmit = function (event) {
+            var EmployeeNumber = document.getElementById('EmployeeNumber').value;
+            var HireDate = document.getElementById('HireDate').value;
+
+            // regex pattern for employee number 
+            var empNumPattern = /^[T]\d{3}$/;
+
+            // check if employee number is valid
+            if (!empNumPattern.test(EmployeeNumber)) {
+                // show alert and prevent form submission
+                alert('Employee number must start with T followed by 3 digits');
+                event.preventDefault();
+            }
+
+            // check if hire date is in the past
+            if (new Date(HireDate) > new Date()) {
+                // show alert and prevent form submission
+                alert('Hire date cannot be in the future');
+                event.preventDefault();
+            }
+        }
+    }
+</script>
+
+
+

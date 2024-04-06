@@ -1,0 +1,155 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+
+.listitem {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: darkgray;
+    border-radius: 3px;
+
+}
+
+.listitem:hover {
+    background-color: lightgray;
+}
+
+.main-list {
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+    cursor: pointer;
+}
+
+.formitem {
+    margin: 16px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.formitem .input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 8px 0;
+}
+
+.formitem .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.formitem .btn:hover {
+    background-color: #45a049;
+}
+
+.showcontainer {
+    display: flex;
+    width: 100%;
+    flex-direction:column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #4CAF50;
+}
+
+.navlink {
+    text-decoration: none;
+    color: blue;
+    cursor: pointer;
+}
+
+.dellink {
+    text-decoration:none;
+    color: red;
+    cursor: pointer;
+}
+
+.dellink:hover {
+    color: darkred;
+    text-decoration: underline;
+}
+
+.delform {
+    width: 100%;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content:center;
+}
+
+.delbtn {
+    background-color: red;
+    color: white;
+    padding: 8px 16px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delbtn:hover {
+    background-color: darkred;
+}
+
+.addform {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.addform input {
+    width: 50%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.addform div {
+       display: flex;
+        gap: 2px;
+        flex-direction:column;
+        align-items: flex-start;
+        justify-content: center;
+}
+
+.addform .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.addform .btn:hover {
+        background-color: #45a049;
+}

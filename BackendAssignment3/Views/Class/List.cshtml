@@ -1,0 +1,21 @@
+﻿@model IEnumerable<BackendAssignment3.Models.Class>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Classes</h2>
+
+
+
+<form class="formitem" action="/Class/List" method="GET">
+    <input class="input" type="text" name="SearchKey" />
+    <input class="btn" type="submit" value="Search" />
+</form>
+
+
+@foreach (var item in Model)
+{
+    <div class="listitem">
+        <a class="main-list" href="/Class/Show/@item.ClassId">@item.ClassCode @item.ClassName</a>
+    </div>
+}

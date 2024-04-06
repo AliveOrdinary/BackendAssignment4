@@ -1,0 +1,17 @@
+﻿@model BackendAssignment3.Models.TeacherClassModel
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<div class="showcontainer">
+
+    <h2>Are you sure you want to delete @Model.Teacher.TeacherFname @Model.Teacher.TeacherLname?</h2>
+    <p>This action cannot be undone.</p>
+    <p>Teacher ID: @Model.Teacher.TeacherId</p>
+    <form class="delform" method="POST" action="/Teacher/Delete/@Model.Teacher.TeacherId">
+        <a class="navlink" href="/Teacher/Show/@Model.Teacher.TeacherId">Cancel</a>
+        <button class="delbtn" href="">Confirm Delete</button>
+    </form>
+</div>
+
+

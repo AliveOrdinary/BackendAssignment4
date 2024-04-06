@@ -1,0 +1,26 @@
+﻿@model IEnumerable<BackendAssignment3.Models.Teacher>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Teachers</h2>
+
+
+<div class="">
+    <nav>
+        <a class="navlink" href="/Teacher/New">Add New Teacher</a>
+     </nav>
+    <form class="formitem" action="/Teacher/List" method="GET">
+        <input class="input" type="text" name="SearchKey" />
+        <input class="btn" type="submit" value="Search" />
+    </form>
+
+    @foreach (var teacher in Model)
+    {
+        <div class="listitem">
+            <a class="main-list" href="/Teacher/Show/@teacher.TeacherId">@teacher.TeacherFname @teacher.TeacherLname</a>
+        </div>
+    }
+
+
+</div>
