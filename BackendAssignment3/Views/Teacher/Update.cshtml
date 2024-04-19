@@ -1,0 +1,67 @@
+﻿@model BackendAssignment3.Models.Teacher
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update Teacher</h2>
+
+<div class="showcontainer">
+    <nav>
+        <a class="navlink" href="/Teacher/Show/@Model.TeacherId">Back to Teacher</a>
+    </nav>
+    <form class="addform" method="POST" action="/Teacher/Update/@Model.TeacherId">
+        <div>
+            <label for="TeacherFname">First Name:</label>
+            <input type="text" name="TeacherFname" id="TeacherFname" value="@Model.TeacherFname" required>
+        </div>
+        <div>
+            <label for="TeacherLname">Last Name:</label>
+            <input type="text" name="TeacherLname" id="TeacherLname" value="@Model.TeacherLname" required>
+        </div>
+        <div>
+            <label for="EmployeeNumber">Employee Number:</label>
+            <input type="text" name="EmployeeNumber" id="EmployeeNumber" value="@Model.EmployeeNumber" required>
+        </div>
+        <div>
+            <label for="HireDate">Hire Date: @Model.HireDate</label>
+            <input type="date" name="HireDate" id="HireDate" value=@Model.HireDate.ToLongDateString() required >
+        </div>
+        <div>
+            <label for="Salary">Salary:</label>
+            <input type="text" name="Salary" id="Salary" value="@Model.Salary" required>
+        </div>
+        <button class="btn" type="submit">Update Teacher</button>
+    </form>
+</div>
+
+<script>
+    window.onload = function () {
+        
+        // validate user input
+        var form = document.querySelector('.addform');
+
+        form.onsubmit = function (event) {
+            var EmployeeNumber = document.getElementById('EmployeeNumber').value;
+            var HireDate = document.getElementById('HireDate').value;
+
+            HireDate.value = new Date('@Model.HireDate');
+
+            // regex pattern for employee number
+            var empNumPattern = /^[T]\d{3}$/;
+
+            // check if employee number is valid
+            if (!empNumPattern.test(EmployeeNumber)) {
+                // show alert and prevent form submission
+                alert('Employee number must start with T followed by 3 digits');
+                event.preventDefault();
+            }
+
+            // check if hire date is in the past
+            if (new Date(HireDate) > new Date()) {
+                // show alert and prevent form submission
+                alert('Hire date cannot be in the future');
+                event.preventDefault();
+            }
+        }
+    }
+</script>

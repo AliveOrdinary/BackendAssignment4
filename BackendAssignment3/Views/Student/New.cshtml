@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Add New Student</h2>
+
+<div class="showcontainer">
+    <nav>
+        <a class="navlink" href="/Student/List">Back to Students list</a>
+    </nav>
+    <form class="addform" method="POST" action="/Student/Create">
+        <div>
+            <label for="StudentFname">First Name:</label>
+            <input type="text" name="StudentFname" id="StudentFname" required>
+        </div>
+        <div>
+            <label for="StudentLname">Last Name:</label>
+            <input type="text" name="StudentLname" id="StudentLname" required>
+        </div>
+        <div>
+            <label for="StudentNumber">Student Number:</label>
+            <input type="text" name="StudentNumber" id="StudentNumber" required>
+        </div>
+        <div>
+            <label for="EnrollDate">Enroll Date:</label>
+            <input type="date" name="EnrollDate" id="EnrollDate" required>
+        </div>
+        <button class="btn" type="submit">Add Student</button>
+    </form>
+</div>
+
+<script>
+    window.onload = function () {
+        // validate user input
+        var form = document.querySelector('.addform');
+
+        form.onsubmit = function (event) {
+            //var EmployeeNumber = document.getElementById('EmployeeNumber').value;
+            var HireDate = document.getElementById('HireDate').value;
+
+            // regex pattern for employee number
+            var empNumPattern = /^[T]\d{3}$/;
+
+            // check if employee number is valid
+            if (!empNumPattern.test(EmployeeNumber)) {
+                // show alert and prevent form submission
+                alert('Employee number must start with T followed by 3 digits');
+                event.preventDefault();
+            }
+
+            // check if hire date is in the past
+            if (new Date(HireDate) > new Date()) {
+                // show alert and prevent form submission
+                alert('Hire date cannot be in the future');
+                event.preventDefault();
+            }
+        }
+    }
+</script>
+
+
+

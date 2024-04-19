@@ -11,6 +11,6 @@ namespace BackendAssignment3.Models
         public string StudentFname;
         public string StudentLname;
         public string StudentNumber;
-        public string EnrollDate;
+        public DateTime EnrollDate;
     }
 }

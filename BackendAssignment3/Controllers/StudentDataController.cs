@@ -58,7 +58,7 @@ namespace BackendAssignment3.Controllers
                 string StudentFname = ResultSet["studentfname"].ToString(); 
                 string StudentLname = ResultSet["studentlname"].ToString();
                 string StudentNumber = ResultSet["studentnumber"].ToString();
-                string EnrollDate = ResultSet["enroldate"].ToString();
+                DateTime EnrollDate = Convert.ToDateTime(ResultSet["enroldate"]);
 
                 // Create a new Student Object
                 Student NewStudent = new Student();
@@ -112,7 +112,7 @@ namespace BackendAssignment3.Controllers
                 string StudentFname = ResultSet["studentfname"].ToString();
                 string StudentLname = ResultSet["studentlname"].ToString();
                 string StudentNumber = ResultSet["studentnumber"].ToString();
-                string EnrollDate = ResultSet["enroldate"].ToString();
+                DateTime EnrollDate = Convert.ToDateTime(ResultSet["enroldate"]);
 
                 // Create a new Student Object
                 NewStudent.StudentId = StudentId;
@@ -159,6 +159,40 @@ namespace BackendAssignment3.Controllers
 
             Conn.Close();
 
+        }
+
+        /// <summary>
+        /// This controller will add a student to the database
+        /// </summary>
+        /// <param name="NewStudent"></param>
+
+        [HttpPost]
+        public void AddStudent([FromBody] Student NewStudent)
+        {
+            // Create a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            // Open the connection between the web server and database
+            Conn.Open();
+
+            // Establish a new command for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            // SQL Query
+            cmd.CommandText = "INSERT into students (studentfname, studentlname, studentnumber, enroldate) " +
+                "values (@StudentFname, @StudentLname, @StudentNumber, @EnrollDate)";
+
+            // Search Parameter
+            cmd.Parameters.AddWithValue("@StudentFname", NewStudent.StudentFname);
+            cmd.Parameters.AddWithValue("@StudentLname", NewStudent.StudentLname);
+            cmd.Parameters.AddWithValue("@StudentNumber", NewStudent.StudentNumber);
+            cmd.Parameters.AddWithValue("@EnrollDate", NewStudent.EnrollDate);
+
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
         }
     }
 }

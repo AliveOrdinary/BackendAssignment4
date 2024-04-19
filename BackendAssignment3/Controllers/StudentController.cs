@@ -86,5 +86,42 @@ namespace BackendAssignment3.Controllers
 
             return RedirectToAction("List");
         }
+
+        // GET: Student/New
+
+        /// <summary>
+        /// This controller will show the form to create a new student
+        /// </summary>
+        /// <returns></returns>
+
+        public ActionResult New()
+        {
+            return View();
+        }
+
+        // POST: Student/Create
+
+        /// <summary>
+        /// This controller will create a new student in the database
+        /// </summary>
+        /// <param name="StudentFname"></param>
+        /// <param name="StudentLname"></param>
+        /// <param name="StudentNumber"></param>
+        /// <param name="EnrollDate"></param>
+        /// <returns></returns>
+
+        public ActionResult Create( string StudentFname, string StudentLname, string StudentNumber, DateTime EnrollDate)
+        {
+            Student NewStudent = new Student();
+            NewStudent.StudentFname = StudentFname;
+            NewStudent.StudentLname = StudentLname;
+            NewStudent.StudentNumber = StudentNumber;
+            NewStudent.EnrollDate = EnrollDate;
+
+            StudentDataController controller = new StudentDataController();
+            controller.AddStudent(NewStudent);
+
+            return RedirectToAction("List");
+        }
     }
 }

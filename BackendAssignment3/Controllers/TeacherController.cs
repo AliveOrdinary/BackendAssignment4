@@ -149,5 +149,42 @@ namespace BackendAssignment3.Controllers
             return RedirectToAction("List");
         }
 
+        // GET: Teacher/Update/{id}
+
+        public ActionResult Update(int id)
+        {
+            // Instantiate the data controller
+            TeacherDataController controller = new TeacherDataController();
+
+
+            // Get the teacher based on the id
+            Teacher SelectedTeacher = controller.FindTeacher(id);
+
+            return View(SelectedTeacher);
+        }
+
+        // POST: Teacher/Update/{id}
+
+        [HttpPost]
+
+
+        public ActionResult Update(int id, string TeacherFname, string TeacherLname, string EmployeeNumber, DateTime HireDate, decimal Salary)
+        {
+            // create a new teacher object
+            Teacher TeacherInfo = new Teacher();
+
+            TeacherInfo.TeacherFname = TeacherFname;
+            TeacherInfo.TeacherLname = TeacherLname;
+            TeacherInfo.EmployeeNumber = EmployeeNumber;
+            TeacherInfo.HireDate = HireDate;
+            TeacherInfo.Salary = Salary;
+
+            // Instantiate the data controller
+            TeacherDataController controller = new TeacherDataController();
+
+            controller.UpdateTeacher(id, TeacherInfo);
+            return RedirectToAction("Show/" + id);
+        }
+
     }
 }

@@ -287,6 +287,35 @@ namespace BackendAssignment3.Controllers
 
         }
 
+        public void UpdateTeacher(int id, [FromBody]Teacher TeacherInfo)
+        {
+            // Create a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            // Open the connection between the web server and database
+            Conn.Open();
+
+            // Establish a new command for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            // SQL Query
+            cmd.CommandText = "UPDATE teachers SET teacherfname = @TeacherFname, teacherlname = @TeacherLname, employeenumber = @EmployeeNumber, hiredate = @HireDate, salary = @Salary WHERE teacherid = @id";
+
+            // Search Parameter
+            cmd.Parameters.AddWithValue("@TeacherFname", TeacherInfo.TeacherFname);
+            cmd.Parameters.AddWithValue("@TeacherLname", TeacherInfo.TeacherLname);
+            cmd.Parameters.AddWithValue("@EmployeeNumber", TeacherInfo.EmployeeNumber);
+            cmd.Parameters.AddWithValue("@HireDate", TeacherInfo.HireDate);
+            cmd.Parameters.AddWithValue("@Salary", TeacherInfo.Salary);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+        }
+
         
 
         
